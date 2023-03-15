@@ -5,22 +5,36 @@
     <meta charset=utf-8/>
     <link rel="stylesheet" type="text/css" href="style.css">
 
-    <title>TODO: Add short title here</title>
+    <title>DS4200 Final Project: Ritu Shah & Angeline Teo</title> 
 </head>
 
 
 <body>
 
-    <h1>TODO: Add project title here</h1>
+    <h1>Health Data Breaches in the United States</h1>
 
     <div>
         <h2>Motivation</h2>
-        TODO: Add motivation / use case here 
+            <p>Healthcare organizations face significant challenges in safeguarding patient data due to the constantly evolving threat of cyberattacks. A data breach could not only result in reputational damage and legal consequences, but also cause harm to patients. Healthcare organizations need to conduct regular risk assessments to identify potential vulnerabilities and threats to patient data security and develop data security strategies to mitigate those risks. The use of a visualization tool may be effective for healthcare organizations to enhance their security systems and safeguard patient data. This visualization tool will showcase health data breaches reported by the U.S. Department of Health and Human Services that are currently being investigated by the Office for Civil Rights. Attributes that will be visible are the name of the entity, the state the breach occurred, the type of covered entity, the number of affected individuals, type of breach, location of breach information, and the date of breach. This can be used to identify connections with organizations that have experienced data breaches, allowing healthcare organizations to conduct more targeted risk assessments and develop more effective data security strategies. The visualization tool can also assist healthcare users in selecting a healthcare entity, enabling them to make informed decisions about whether or not to entrust their data to an organization.
+            This visualization will support two domain tasks. The first is conducting a risk assessment. Healthcare organizations need to conduct regular risk assessments to identify potential vulnerabilities and threats to patient data security. By using the visualization tool to identify connections with organizations that have experienced data breaches, the healthcare organization can conduct a more targeted risk assessment that focuses on specific areas of concern. This task requires specialized knowledge of healthcare data security and risk management principles, as well as the ability to analyze data and identify potential risks. Another domain task is developing a data security strategy. Once potential risks have been identified through the risk assessment, the healthcare organization needs to develop a data security strategy to mitigate those risks. This task requires a deep understanding of healthcare data security regulations and best practices, as well as the ability to develop and implement effective security measures. By using the visualization tool to identify connections with organizations that have experienced data breaches, the healthcare organization can develop a more targeted data security strategy that addresses specific areas of concern.
+            </p>
+        
     </div>
 
     <div>
         <h2>Background</h2>
-        TODO: Add link to report, demo video, link to data etc. here  
+
+        <h4>Data</h4>
+        <p>Link to original data:
+            <a href="https://ocrportal.hhs.gov/ocr/breach/breach_report.jsf">https://ocrportal.hhs.gov/ocr/breach/breach_report.jsf</a>
+        </p>
+
+        <p>The data was collected by the U.S. Department of Health and Human Services that are currently being investigated by the Office for Civil Rights. The original dataset can be found in this link: https://ocrportal.hhs.gov/ocr/breach/breach_report.jsf. The U.S. Department of Health and Human Services is a sector of the United States government that promotes the well-being and health of all Americans by supporting services that emphasize the science behind medicine, public health, and social services. The data demonstrates a list of data breaches reported within the last 24 months that have affected 500 or more individuals with unsecured health information. It shows the name of the covered entity, also known as the organization or company that was affected by a data breach, the type of covered entity, and the type of breach. Additionally, the state, the date of the submitted breach, and the number of individuals affected are shown.
+        Since this data is directly submitted to the U.S. government, there should be no bias as it is information that should be neutralized without any preference. The data is covered from all places around the United States and does not only show one part of the country. The only aspect that is disadvantageous is the option of “Other” which is included in the “Type of Breach” column. This option does not fully specify what type of breach was committed. This information should be fully open about every type of data breach that exists to create more awareness among users of healthcare and allow readers of the data to see if a specific type was more common compared to other breaches or if it would have an impact on the statistics of the data.
+        The data doesn’t have any missing or unexpected values. There are no outliers, and the data contains all the attributes we want to visualize. However, the values under “Name of Covered Entity” in the data are messy, containing characters that do not make logical sense, extraneous information, and inconsistent capitalization and formatting (ex. “doing business as” is written as “d/b/a”, “dba”, “doing business as”). In terms of data cleaning, there was an additional column included called “Web Description” that had no data, so this column was removed since it was not essential to our visualization. There were also white spaces towards the end of certain words which were eventually removed. All the data had consistent wording and spelling and did not require any change. There were no new, derived attributes added to the data.
+        </p>
+
+         
     </div>
 
     <div>
@@ -31,6 +45,21 @@
     <div>
         <h2>Acknowledgements</h2>
         TODO: Cite resources used here   
+
+
+         <h1 id= "acknowledgements">Acknowledgements</h1>
+
+        <div>
+
+        <ul>
+            <li>
+                <a href="https://www.geeksforgeeks.org/html-lists/?ref=lbp">https://www.geeksforgeeks.org/html-lists/?ref=lbp</a>
+            </li>
+
+        </ul>
+
+        </div>
+
     </div>
 
 
