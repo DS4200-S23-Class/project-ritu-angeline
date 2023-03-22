@@ -1,4 +1,4 @@
-var simplemaps_usmap_mapdata={
+const simplemaps_usmap_mapdata={
   main_settings: {
    //General settings
     width: "650", //'700' or 'responsive'
