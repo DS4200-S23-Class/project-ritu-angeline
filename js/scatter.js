@@ -17,7 +17,7 @@ const FRAME1 = d3.select("#vis1")
 // read data and create plot
 d3.csv("data/breach_report.csv").then((data) => {
 
-console.log(data.columns);
+console.log(data);
 
   // VISUALIZATION
 
