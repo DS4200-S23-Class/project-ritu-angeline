@@ -11,7 +11,7 @@ var simplemaps_usmap_mapdata={
     border_color: "white",
     
     //State defaults
-    state_description: "Learn about data breaches in a certain state.",
+    state_description: "Learn about data breaches in your state.",
     state_color: "#77bcff",
     state_hover_color: "#038EEB",
     state_url: "http://simplemaps.com",
@@ -324,59 +324,7 @@ var simplemaps_usmap_mapdata={
     }
   },
   locations: {
-    "0": {
-      name: "New York",
-      lat: "40.71",
-      lng: "-74.0059731"
-    },
-    "1": {
-      name: "Chicago, IL",
-      lat: "41.9288",
-      lng: "-87.6315"
-    },
-    "2": {
-      name: "Seattle, WA",
-      lat: "47.6026",
-      lng: "-122.3284"
-    },
-    "3": {
-      name: "San Francisco, CA",
-      lat: "37.7312",
-      lng: "-122.3826"
-    },
-    "4": {
-      name: "Dallas, TX",
-      lat: "32.7825",
-      lng: "-96.8207"
-    },
-    "5": {
-      name: "Seattle, WA",
-      lat: "47.6026",
-      lng: "-122.3284"
-    },
-    "6": {
-      name: "Atlanta, GA",
-      lat: "33.8477",
-      lng: "-84.2814"
-    },
-    "7": {
-      name: "Denver, CO",
-      lat: "39.7525",
-      lng: "-104.9995"
-    },
-    "8": {
-      name: "Minneapolis, MN",
-      lat: "45.0059",
-      lng: "-93.4305",
-      size: "50",
-      type: "star",
-      color: "#ffe42f"
-    },
-    "9": {
-      lat: 61.218,
-      lng: -149.858,
-      name: "Anchorage"
-    }
+    
   },
   regions: {},
   labels: {},
