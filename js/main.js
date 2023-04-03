@@ -72,6 +72,90 @@ let states = FRAME2.append("g")
 
 })
 
+// BAR PLOT
+
+// Declare constants for frame
+const FRAME_HEIGHT = 400;
+const FRAME_WIDTH = 400;
+const MARGINS = {left: 60, right: 60, top: 60, bottom: 60};
+
+// creates a scale for visualization
+const VIS_HEIGHT = FRAME_HEIGHT - MARGINS.top - MARGINS.bottom;
+const VIS_WIDTH = FRAME_WIDTH - MARGINS.left - MARGINS.right;
+
+//create a new frame - barplot
+const FRAME1 = d3.select("#vis2")
+                  .append("svg")
+                    .attr("height", FRAME_HEIGHT)
+                    .attr("width", FRAME_WIDTH)
+
+const X_SCALE2 = d3.scaleBand()
+  .range([ 0, VIS_WIDTH])
+  .padding(0.2);
+const xAxis = FRAME1.append("g")
+  .attr("transform", "translate(" + MARGINS.top +
+              "," + (VIS_HEIGHT + MARGINS.top) + ")")
+
+// Initialize the Y axis
+const Y_SCALE2 = d3.scaleLinear()
+  .range([VIS_HEIGHT, 0]);
+const yAxis = FRAME1.append("g")
+  .attr("transform", "translate(" + MARGINS.left +
+              "," + (MARGINS.top) + ")")
+  .attr("class", "myYaxis");
+
+
+// A function that create / update the plot for a given variable:
+function update(selectedYear) {
+
+  // Parse the Data
+  d3.csv("data/breach_types.csv").then((data) => {
+
+    // X axis
+    X_SCALE2.domain(data.map(function(d) { return d.Type; }));
+    xAxis.transition().duration(1000).call(d3.axisBottom(X_SCALE2));
+
+
+    // Add Y axis
+    Y_SCALE2.domain([0, d3.max(data, function(d) { return + d[selectedYear] }) ]);
+    yAxis.transition().duration(1000).call(d3.axisLeft(Y_SCALE2));
+
+    // variable u: map data to existing bars
+    const u = FRAME1.selectAll("rect")
+      .data(data)
+
+    // update bars
+    u
+      .enter()
+      .append("rect")
+      .merge(u)
+      .transition()
+      .duration(1000)
+        .attr("x", function(d) { return X_SCALE2(d.Type) + MARGINS.left; })
+        .attr("y", function(d) { return Y_SCALE2(d[selectedYear]) + MARGINS.top; })
+        .attr("width", X_SCALE2.bandwidth())
+        .attr("height", function(d) { return VIS_HEIGHT - Y_SCALE2(d[selectedYear]); })
+        .attr("fill", "IndianRed")
+  })
+
+  // Add X axis label
+  FRAME1.append("text")
+    .attr("text-anchor", "end")
+    .attr("x", VIS_WIDTH - 20)
+    .attr("y", VIS_HEIGHT + MARGINS.top + 50)
+    .text("Type of Breach");
+
+  // Rotate x-tick labels
+  FRAME1.append("g")
+        .call(xAxis)
+        .selectAll(".class xticks")  
+            .attr("transform", "rotate(60)");
+}
+
+
+// Initialize plot
+update('2021')
+
 
 
 
