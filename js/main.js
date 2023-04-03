@@ -1,387 +1,79 @@
-const simplemaps_usmap_mapdata={
-  main_settings: {
-   //General settings
-    width: "650", //'700' or 'responsive'
-    background_color: "#FFFFFF",
-    background_transparent: "yes",
-    
-    //Label defaults
-    label_color: "#002767",
-    hide_labels: "no",
-    border_color: "white",
-    
-    //State defaults
-    state_description: "Learn about data breaches in a certain state.",
-    state_color: "#77bcff",
-    state_hover_color: "#038EEB",
-    state_url: "http://simplemaps.com",
-    all_states_inactive: "no",
-    
-    //Location defaults
-    location_description: "Data Breach",
-    location_color: "#ff46a2",
-    location_pulse: "yes",
-    location_pulse_size: "3",
-    location_opacity: ".8",
-    location_url: "http://simplemaps.com",
-    all_states_zoomable: "yes",
-    location_size: "40",
-    location_type: "marker",
-    all_locations_inactive: "no",
-    url_new_tab: "yes",
-    auto_load: "yes",
-   
-    //Zoom settings
-    zoom: "yes",
-    initial_zoom: "-1",
-    initial_zoom_solo: "yes",
-    
-    //Advanced settings
-    div: "map",
-    state_image_url: "",
-    state_image_position: "",
-    location_image_url: "",
-    label_hover_color: "",
-    label_size: "",
-    label_font: "",
-    popups: "detect"
-  },
-  state_specific: {
-    HI: {
-      name: "Hawaii",
-      hide: "no",
-      inactive: "no"
-    },
-    AK: {
-      name: "Alaska",
-      hide: "no",
-      inactive: "no"
-    },
-    FL: {
-      name: "Florida",
-      inactive: "no",
-      hide: "no"
-    },
-    NH: {
-      name: "New Hampshire",
-      hide: "no",
-      inactive: "no"
-    },
-    VT: {
-      name: "Vermont",
-      hide: "no",
-      inactive: "no"
-    },
-    ME: {
-      name: "Maine",
-      hide: "no",
-      inactive: "no"
-    },
-    RI: {
-      name: "Rhode Island",
-      hide: "no",
-      inactive: "no"
-    },
-    NY: {
-      name: "New York",
-      hide: "no",
-      inactive: "no"
-    },
-    PA: {
-      name: "Pennsylvania",
-      hide: "no",
-      inactive: "no"
-    },
-    NJ: {
-      name: "New Jersey",
-      hide: "no",
-      inactive: "no"
-    },
-    DE: {
-      name: "Delaware",
-      hide: "no",
-      inactive: "no"
-    },
-    MD: {
-      name: "Maryland",
-      hide: "no",
-      inactive: "no"
-    },
-    VA: {
-      name: "Virginia",
-      hide: "no",
-      inactive: "no"
-    },
-    WV: {
-      name: "West Virginia",
-      hide: "no",
-      inactive: "no"
-    },
-    OH: {
-      name: "Ohio",
-      hide: "no",
-      inactive: "no"
-    },
-    IN: {
-      name: "Indiana",
-      hide: "no",
-      inactive: "no"
-    },
-    IL: {
-      name: "Illinois",
-      hide: "no",
-      inactive: "no"
-    },
-    CT: {
-      name: "Connecticut",
-      hide: "no",
-      inactive: "no"
-    },
-    WI: {
-      name: "Wisconsin",
-      hide: "no",
-      inactive: "no"
-    },
-    NC: {
-      name: "North Carolina",
-      hide: "no",
-      inactive: "no"
-    },
-    DC: {
-      name: "District of Columbia",
-      hide: "no",
-      inactive: "no"
-    },
-    MA: {
-      name: "Massachusetts",
-      hide: "no",
-      inactive: "no"
-    },
-    TN: {
-      name: "Tennessee",
-      hide: "no",
-      inactive: "no"
-    },
-    AR: {
-      name: "Arkansas",
-      hide: "no",
-      inactive: "no"
-    },
-    MO: {
-      name: "Missouri",
-      hide: "no",
-      inactive: "no"
-    },
-    GA: {
-      name: "Georgia",
-      hide: "no",
-      inactive: "no"
-    },
-    SC: {
-      name: "South Carolina",
-      hide: "no",
-      inactive: "no"
-    },
-    KY: {
-      name: "Kentucky",
-      hide: "no",
-      inactive: "no"
-    },
-    AL: {
-      name: "Alabama",
-      hide: "no",
-      inactive: "no"
-    },
-    LA: {
-      name: "Louisiana",
-      hide: "no",
-      inactive: "no"
-    },
-    MS: {
-      name: "Mississippi",
-      hide: "no",
-      inactive: "no"
-    },
-    IA: {
-      name: "Iowa",
-      hide: "no",
-      inactive: "no"
-    },
-    MN: {
-      name: "Minnesota",
-      hide: "no",
-      inactive: "no"
-    },
-    OK: {
-      name: "Oklahoma",
-      hide: "no",
-      inactive: "no"
-    },
-    TX: {
-      name: "Texas",
-      hide: "no",
-      inactive: "no"
-    },
-    NM: {
-      name: "New Mexico",
-      hide: "no",
-      inactive: "no"
-    },
-    KS: {
-      name: "Kansas",
-      hide: "no",
-      inactive: "no"
-    },
-    NE: {
-      name: "Nebraska",
-      hide: "no",
-      inactive: "no"
-    },
-    SD: {
-      name: "South Dakota",
-      hide: "no",
-      inactive: "no"
-    },
-    ND: {
-      name: "North Dakota",
-      hide: "no",
-      inactive: "no"
-    },
-    WY: {
-      name: "Wyoming",
-      hide: "no",
-      inactive: "no"
-    },
-    MT: {
-      name: "Montana",
-      hide: "no",
-      inactive: "no"
-    },
-    CO: {
-      name: "Colorado",
-      hide: "no",
-      inactive: "no"
-    },
-    UT: {
-      name: "Utah",
-      hide: "no",
-      inactive: "no"
-    },
-    AZ: {
-      name: "Arizona",
-      hide: "no",
-      inactive: "no"
-    },
-    NV: {
-      name: "Nevada",
-      hide: "no",
-      inactive: "no"
-    },
-    OR: {
-      name: "Oregon",
-      hide: "no",
-      inactive: "no"
-    },
-    WA: {
-      name: "Washington",
-      hide: "no",
-      inactive: "no"
-    },
-    CA: {
-      name: "California",
-      hide: "no",
-      inactive: "no"
-    },
-    MI: {
-      name: "Michigan",
-      hide: "no",
-      inactive: "no"
-    },
-    ID: {
-      name: "Idaho",
-      hide: "no",
-      inactive: "no"
-    },
-    GU: {
-      name: "Guam",
-      hide: "yes",
-      inactive: "no"
-    },
-    VI: {
-      name: "Virgin Islands",
-      hide: "yes",
-      inactive: "no"
-    },
-    PR: {
-      name: "Puerto Rico",
-      hide: "yes",
-      inactive: "no"
-    },
-    MP: {
-      name: "Northern Mariana Islands",
-      hide: "yes",
-      inactive: "no"
-    }
-  },
-  locations: {
-    "0": {
-      name: "New York",
-      lat: "40.71",
-      lng: "-74.0059731"
-    },
-    "1": {
-      name: "Chicago, IL",
-      lat: "41.9288",
-      lng: "-87.6315"
-    },
-    "2": {
-      name: "Seattle, WA",
-      lat: "47.6026",
-      lng: "-122.3284"
-    },
-    "3": {
-      name: "San Francisco, CA",
-      lat: "37.7312",
-      lng: "-122.3826"
-    },
-    "4": {
-      name: "Dallas, TX",
-      lat: "32.7825",
-      lng: "-96.8207"
-    },
-    "5": {
-      name: "Seattle, WA",
-      lat: "47.6026",
-      lng: "-122.3284"
-    },
-    "6": {
-      name: "Atlanta, GA",
-      lat: "33.8477",
-      lng: "-84.2814"
-    },
-    "7": {
-      name: "Denver, CO",
-      lat: "39.7525",
-      lng: "-104.9995"
-    },
-    "8": {
-      name: "Minneapolis, MN",
-      lat: "45.0059",
-      lng: "-93.4305",
-      description: "Company Headquarters",
-      size: "50",
-      type: "star",
-      color: "#ffe42f"
-    },
-    "9": {
-      lat: 61.218,
-      lng: -149.858,
-      name: "Anchorage"
-    }
-  },
-  regions: {},
-  labels: {},
-  legend: {
-    entries: []
+//US MAP
+const width = 975;
+const height = 610;
+
+const FRAME2 = d3.select("#map")
+                .append("svg")
+                .attr("viewBox", [0,0, width, height])
+                
+let path = d3.geoPath()
+d3.json("states-albers-10m.json").then((us) => {
+  
+const g = FRAME2.append("g");
+
+let states = FRAME2.append("g")
+                      .attr("fill", "#0d3a59")
+                      .attr("cursor", "pointer")
+                      .selectAll("path")
+                      .data(topojson.feature(us, us.objects.states).features)
+                      .join("path")
+                      .on("click", clicked)
+                      .attr("d", path);
+
+  
+  states.append("title")
+      .text(d => d.properties.name);
+
+  g.append("path")
+      .attr("fill", "none")
+      .attr("stroke", "white")
+      .attr("stroke-linejoin", "round")
+      .attr("d", path(topojson.mesh(us, us.objects.states, (a, b) => a !== b)));
+
+
+   function zoomed(event) {
+    const {transform} = event;
+    g.attr("transform", transform);
+    g.attr("stroke-width", 1 / transform.k);
   }
-};
+
+
+  const zoom = d3.zoom()
+      .scaleExtent([1, 8])
+      .on("zoom", zoomed);
+
+  function reset() {
+    states.transition().style("fill", null);
+    FRAME2.transition().duration(750).call(
+      zoom.transform,
+      d3.zoomIdentity,
+      d3.zoomTransform(FRAME2.node()).invert([width / 2, height / 2])
+    );
+  }
+
+  function clicked(event, d) {
+    const [[x0, y0], [x1, y1]] = path.bounds(d);
+    event.stopPropagation();
+    states.transition().style("fill", null);
+    d3.select(this).transition().style("fill", "red");
+    FRAME2.transition().duration(750).call(
+      zoom.transform,
+      d3.zoomIdentity
+        .translate(width / 2, height / 2)
+        .scale(Math.min(8, 0.9 / Math.max((x1 - x0) / width, (y1 - y0) / height)))
+        .translate(-(x0 + x1) / 2, -(y0 + y1) / 2),
+      d3.pointer(event, FRAME2.node())
+    );
+  }
+
+  FRAME2.call(zoom);
+
+  FRAME2.on("click", reset);
+
+})
+
+
+
+
+
+
