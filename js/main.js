@@ -1,5 +1,6 @@
-//US MAP
+// US MAP
 
+// map state names to state abbreviations
 us_state_to_abbrev = {
     "Alabama": "AL",
     "Alaska": "AK",
@@ -53,10 +54,14 @@ us_state_to_abbrev = {
     "Wyoming": "WY",
 };
 
+// set map width and height
 const width = 975;
 const height = 610;
+
+// initialize user selected state
 let selectedState = 0;
 
+// create frame for map
 const FRAME2 = d3.select("#map")
                 .append("svg")
                 .attr("viewBox", [0,0, width, height])
@@ -66,6 +71,7 @@ d3.json("states-albers-10m.json").then((us) => {
 
 const g = FRAME2.append("g");
 
+// states for map
 let states = FRAME2.append("g")
                       .attr("fill", "#0d3a59")
                       .attr("cursor", "pointer")
@@ -149,6 +155,7 @@ const FRAME1 = d3.select("#vis2")
                     .attr("height", FRAME_HEIGHT)
                     .attr("width", FRAME_WIDTH)
 
+// Initialize the X axis
 const X_SCALE2 = d3.scaleBand()
   .range([ 0, VIS_WIDTH])
   .padding(0.2);
@@ -174,7 +181,7 @@ function update(selectedYear) {
   // Parse the Data
   d3.csv("data/breach_types.csv").then((data) => {
 
-    // X axis
+    // Add X axis
     X_SCALE2.domain(data.map(function(d) { return d.Type; }));
     xAxis.transition().duration(1000).call(d3.axisBottom(X_SCALE2)).selectAll("text")
                                                                     .attr("dx", "-.8em")
@@ -204,6 +211,7 @@ function update(selectedYear) {
         .attr("height", function(d) { return VIS_HEIGHT - Y_SCALE2(d[selectedYear]); })
         .attr("fill", "IndianRed");
   })
+  // if state is selected
 } else{
 
   if(selectedYear == 2021){
@@ -217,6 +225,7 @@ function update(selectedYear) {
   types = Object.keys(dict)
   counts = Object.values(dict)
 
+  // initialize selected state data
   const barData = [
     {type: types[0], count: counts[0]},
     {type: types[1], count: counts[1]},
@@ -225,6 +234,7 @@ function update(selectedYear) {
     {type: types[4], count: counts[4]}
     ];
 
+  // Add X axis
   X_SCALE2.domain(barData.map(function(d) { return d.type; }));
     xAxis.transition().duration(1000).call(d3.axisBottom(X_SCALE2)
       .tickFormat((d,i) => ["Hacking/IT Incident", "Unauthorized Access/Disclosure","Theft","Improper Disposal","Loss"][i]))
@@ -235,25 +245,24 @@ function update(selectedYear) {
                                                                     .attr("transform", "rotate(-30)");
 
 
-    // Add Y axis
-    Y_SCALE2.domain([0, d3.max(barData, function(d) { return d.count; }) ]);
-    yAxis.transition().duration(1000).call(d3.axisLeft(Y_SCALE2));
+  // Add Y axis
+  Y_SCALE2.domain([0, d3.max(barData, function(d) { return d.count; }) ]);
+  yAxis.transition().duration(1000).call(d3.axisLeft(Y_SCALE2));
 
-    const u = FRAME1.selectAll("rect")
-      .data(barData)
-
-    // update bars
-    u
-      .enter()
-      .append("rect")
-      .merge(u)
-      .transition()
-      .duration(1000)
-        .attr("x", function(d) { return X_SCALE2(d.type) + MARGINS.left; })
-        .attr("y", function(d) { return Y_SCALE2(d.count) + MARGINS.top; })
-        .attr("width", X_SCALE2.bandwidth())
-        .attr("height", function(d) { return VIS_HEIGHT - Y_SCALE2(d.count); })
-        .attr("fill", "IndianRed");
+  const u = FRAME1.selectAll("rect")
+    .data(barData)
+  // update bars
+  u
+    .enter()
+    .append("rect")
+    .merge(u)
+    .transition()
+    .duration(1000)
+      .attr("x", function(d) { return X_SCALE2(d.type) + MARGINS.left; })
+      .attr("y", function(d) { return Y_SCALE2(d.count) + MARGINS.top; })
+      .attr("width", X_SCALE2.bandwidth())
+      .attr("height", function(d) { return VIS_HEIGHT - Y_SCALE2(d.count); })
+      .attr("fill", "IndianRed");
 
 }
 
@@ -268,12 +277,12 @@ function update(selectedYear) {
 
 // LINKING 
 
-//nested dictionary
+// nested dictionary
 const dataset_2021 = {};
 const dataset_2022 = {};
 const dataset_2023 = {};
 d3.csv("data/breach_report.csv").then(function(data) {
-  //create empty dictionaries for states and type counts
+  // create empty dictionaries for states and type counts
   const typeDict = {HackingITIncident: 0, UnauthorizedAccessDisclosure: 0, Theft: 0, 
               ImproperDisposal: 0, Loss: 0}
   const stateList = [...new Set(data.map(d => d.State))].sort()
@@ -286,43 +295,41 @@ d3.csv("data/breach_report.csv").then(function(data) {
               ImproperDisposal: 0, Loss: 0};
   }
 
-  data.forEach(function (d,i){
-    //cleaning type names
-    if(d.Type == "Hacking/IT Incident"){
-      d.Type = "HackingITIncident";
-    }
-    if(d.Type == "Unauthorized Access/Disclosure"){
-      d.Type = "UnauthorizedAccessDisclosure";
-    }
-    if(d.Type == "Improper Disposal"){
-      d.Type = "ImproperDisposal";
-    }
+// iterate through the data
+data.forEach(function (d,i){
+  // clean type names
+  if(d.Type == "Hacking/IT Incident"){
+    d.Type = "HackingITIncident";
+  }
+  if(d.Type == "Unauthorized Access/Disclosure"){
+    d.Type = "UnauthorizedAccessDisclosure";
+  }
+  if(d.Type == "Improper Disposal"){
+    d.Type = "ImproperDisposal";
+  }
 
-    if (d.Year == 2021){
-      temp = dataset_2021[d.State];
-      temp[d.Type]++;
-      dataset_2021[d.State] = temp;
-      temp = typeDict;
-    };
-    if (d.Year == 2022){
-      temp = dataset_2022[d.State];
-      temp[d.Type]++;
-      dataset_2022[d.State] = temp;
-      temp = typeDict;
-    };
-    if (d.Year == 2023){
-      temp = dataset_2023[d.State];
-      temp[d.Type]++;
-      dataset_2023[d.State] = temp;
-      temp = typeDict;
-    };
+  // sort by year
+  if (d.Year == 2021){
+    temp = dataset_2021[d.State];
+    temp[d.Type]++;
+    dataset_2021[d.State] = temp;
+    temp = typeDict;
+  };
+  if (d.Year == 2022){
+    temp = dataset_2022[d.State];
+    temp[d.Type]++;
+    dataset_2022[d.State] = temp;
+    temp = typeDict;
+  };
+  if (d.Year == 2023){
+    temp = dataset_2023[d.State];
+    temp[d.Type]++;
+    dataset_2023[d.State] = temp;
+    temp = typeDict;
+  };
 
 
 })
-
-  console.log("2021", dataset_2021);
-  console.log("2022", dataset_2022);
-  console.log("2023", dataset_2023);
 
 });
 
